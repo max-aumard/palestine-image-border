@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Palestine Image Border</title>
+  <title>Palestine Image Border — Free Profile Frame</title>
   <meta name="description" content="Add a Palestine flag border to your profile picture. 100% free, 100% private — everything runs in your browser.">
   <meta property="og:title" content="Palestine Image Border">
   <meta property="og:description" content="Add a Palestine flag border to your profile picture. Free and private.">
@@ -13,24 +13,45 @@
 </head>
 <body>
   <header>
-    <h1>Palestine Image Border</h1>
-    <p class="subtitle">Add a Palestine flag frame to your profile picture</p>
+    <div class="header-inner">
+      <h1>Palestine Image Border</h1>
+      <p class="subtitle">Add a Palestine flag frame to your profile picture — free &amp; private</p>
+    </div>
   </header>
 
   <main>
     <!-- Step 1: Upload -->
     <section id="upload-section" class="step active">
-      <div id="drop-zone" tabindex="0" role="button" aria-label="Upload an image">
-        <div class="drop-zone-content">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-            <polyline points="17 8 12 3 7 8"/>
-            <line x1="12" y1="3" x2="12" y2="15"/>
-          </svg>
-          <p>Drop your image here or <strong>click to browse</strong></p>
-          <span class="hint">Your image never leaves your browser</span>
+      <div class="upload-card">
+        <div id="drop-zone" tabindex="0" role="button" aria-label="Upload an image">
+          <div class="drop-zone-content">
+            <div class="upload-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+            </div>
+            <p class="upload-text">Drop your image here or <strong>click to browse</strong></p>
+            <span class="upload-hint">PNG, JPG, WebP — your image never leaves your browser</span>
+          </div>
+          <input type="file" id="file-input" accept="image/*" hidden>
         </div>
-        <input type="file" id="file-input" accept="image/*" hidden>
+
+        <div class="features-grid">
+          <div class="feature">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>100% Private</span>
+          </div>
+          <div class="feature">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            <span>Free forever</span>
+          </div>
+          <div class="feature">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <span>Instant result</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -39,40 +60,54 @@
       <div class="editor-layout">
         <!-- Crop area -->
         <div class="crop-area">
-          <h2>Crop your image</h2>
-          <div id="crop-container">
-            <img id="crop-image" alt="Image to crop">
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Crop your image</h2>
+            </div>
+            <div id="crop-container">
+              <img id="crop-image" alt="Image to crop">
+            </div>
           </div>
         </div>
 
-        <!-- Controls -->
+        <!-- Controls + Preview -->
         <div class="controls">
-          <h2>Customize</h2>
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Customize</h2>
+            </div>
 
-          <div class="control-group">
-            <label for="border-width">Border width</label>
-            <input type="range" id="border-width" min="5" max="30" value="12" step="1">
-            <span id="border-width-value">12%</span>
-          </div>
+            <div class="control-group">
+              <label for="border-width">Border width</label>
+              <div class="range-row">
+                <input type="range" id="border-width" min="1" max="30" value="5" step="1">
+                <span id="border-width-value" class="range-value">5%</span>
+              </div>
+            </div>
 
-          <div class="control-group">
-            <label>Frame shape</label>
-            <div class="shape-toggle">
-              <button id="shape-circle" class="shape-btn active" aria-label="Circle frame">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
-                Circle
-              </button>
-              <button id="shape-square" class="shape-btn" aria-label="Square frame">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
-                Square
-              </button>
+            <div class="control-group">
+              <label>Frame shape</label>
+              <div class="shape-toggle">
+                <button id="shape-circle" class="shape-btn active" aria-label="Circle frame">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+                  Circle
+                </button>
+                <button id="shape-square" class="shape-btn" aria-label="Square frame">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+                  Square
+                </button>
+              </div>
             </div>
           </div>
 
           <!-- Preview -->
-          <div class="preview-area">
-            <h3>Preview</h3>
-            <canvas id="preview-canvas" width="300" height="300"></canvas>
+          <div class="panel preview-panel">
+            <div class="panel-header">
+              <h2>Preview</h2>
+            </div>
+            <div class="preview-wrapper">
+              <canvas id="preview-canvas" width="300" height="300"></canvas>
+            </div>
           </div>
 
           <div class="actions">
@@ -84,7 +119,12 @@
               </svg>
               Download PNG
             </button>
-            <button id="btn-reset" class="btn btn-secondary">Change image</button>
+            <button id="btn-reset" class="btn btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+              </svg>
+              Change image
+            </button>
           </div>
         </div>
       </div>
@@ -92,8 +132,15 @@
   </main>
 
   <footer>
-    <p>100% free &amp; open source — Your images never leave your browser</p>
-    <a href="https://github.com/max-aumard/palestine-image-border" target="_blank" rel="noopener">GitHub</a>
+    <div class="footer-inner">
+      <p>100% free &amp; open source — Your images never leave your browser</p>
+      <div class="footer-links">
+        <a href="https://github.com/max-aumard/palestine-image-border" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
