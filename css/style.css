@@ -63,6 +63,7 @@ header {
 .flag-stripe.black { background: var(--black); }
 .flag-stripe.white { background: var(--white); border-bottom: 1px solid var(--border); }
 .flag-stripe.green { background: var(--green); }
+.flag-stripe.red { background: var(--red); }
 
 header h1 {
   font-size: 1.6rem;
