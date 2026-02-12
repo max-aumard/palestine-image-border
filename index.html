@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palestine Image Border</title>
+  <meta name="description" content="Add a Palestine flag border to your profile picture. 100% free, 100% private — everything runs in your browser.">
+  <meta property="og:title" content="Palestine Image Border">
+  <meta property="og:description" content="Add a Palestine flag border to your profile picture. Free and private.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Palestine Image Border</h1>
+    <p class="subtitle">Add a Palestine flag frame to your profile picture</p>
+  </header>
+
+  <main>
+    <!-- Step 1: Upload -->
+    <section id="upload-section" class="step active">
+      <div id="drop-zone" tabindex="0" role="button" aria-label="Upload an image">
+        <div class="drop-zone-content">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          <p>Drop your image here or <strong>click to browse</strong></p>
+          <span class="hint">Your image never leaves your browser</span>
+        </div>
+        <input type="file" id="file-input" accept="image/*" hidden>
+      </div>
+    </section>
+
+    <!-- Step 2: Crop & Customize -->
+    <section id="editor-section" class="step">
+      <div class="editor-layout">
+        <!-- Crop area -->
+        <div class="crop-area">
+          <h2>Crop your image</h2>
+          <div id="crop-container">
+            <img id="crop-image" alt="Image to crop">
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+          <h2>Customize</h2>
+
+          <div class="control-group">
+            <label for="border-width">Border width</label>
+            <input type="range" id="border-width" min="5" max="30" value="12" step="1">
+            <span id="border-width-value">12%</span>
+          </div>
+
+          <div class="control-group">
+            <label>Frame shape</label>
+            <div class="shape-toggle">
+              <button id="shape-circle" class="shape-btn active" aria-label="Circle frame">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+                Circle
+              </button>
+              <button id="shape-square" class="shape-btn" aria-label="Square frame">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+                Square
+              </button>
+            </div>
+          </div>
+
+          <!-- Preview -->
+          <div class="preview-area">
+            <h3>Preview</h3>
+            <canvas id="preview-canvas" width="300" height="300"></canvas>
+          </div>
+
+          <div class="actions">
+            <button id="btn-download" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download PNG
+            </button>
+            <button id="btn-reset" class="btn btn-secondary">Change image</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>100% free &amp; open source — Your images never leave your browser</p>
+    <a href="https://github.com/max-aumard/palestine-image-border" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+  <script src="js/canvas.js"></script>
+  <script src="js/crop.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -19,6 +19,8 @@ palestine-image-border/
 │   └── crop.js         # Image cropping integration (Cropper.js)
 ├── assets/
 │   └── preview.png     # OG image / preview for social sharing
+├── Dockerfile          # Nginx-based container for VPS deployment
+├── nginx.conf          # Nginx config for SPA
 ├── CLAUDE.md
 ├── LICENSE             # MIT
 └── README.md
@@ -29,7 +31,7 @@ palestine-image-border/
 - **HTML/CSS/JS vanilla** — no framework, no build step
 - **Canvas API** — for drawing the Palestine flag border and compositing the image
 - **Cropper.js** (CDN) — lightweight client-side image cropping library
-- **GitHub Pages** — free static hosting, zero server cost
+- **Deployment** — GitHub Pages (free) or Docker + Nginx on VPS
 
 ## Flag Border Layout
 
@@ -78,6 +80,13 @@ npx serve .
 ```
 
 Open `http://localhost:8000`
+
+### Deploy with Docker
+
+```bash
+docker build -t palestine-border .
+docker run -d -p 8080:80 palestine-border
+```
 
 ### Code Conventions
 
