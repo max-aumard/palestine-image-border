@@ -34,7 +34,7 @@ const PalestineBorder = (() => {
    * @returns {HTMLCanvasElement}
    */
   function render(image, options, targetCanvas) {
-    const { borderPercent = 12, isCircle = true } = options;
+    const { borderPercent = 5, isCircle = true } = options;
 
     const canvas = targetCanvas || document.createElement('canvas');
     const size = targetCanvas ? targetCanvas.width : OUTPUT_SIZE;
@@ -96,18 +96,26 @@ const PalestineBorder = (() => {
     const outerCorner = size * 0.08;
     const innerCorner = innerRadius * 0.12;
 
-    // Clip regions match the flag proportions:
-    // Black & green extend further right, white is narrower, red is on the left
-    const topRight = [size * 0.82, 0];
-    const bottomRight = [size * 0.82, size];
-    const topLeft = [size * 0.18, 0];
-    const bottomLeft = [size * 0.18, size];
+    // Map the same flag angle boundaries from the circle to square edge intersections.
+    // Using the SEGMENTS angles to find where dividing lines from center hit the square edges:
+    // -140° → hits left edge at y ≈ 8% from top
+    // -30°  → hits right edge at y ≈ 21% from top
+    //  30°  → hits right edge at y ≈ 79% from top
+    // 140°  → hits left edge at y ≈ 92% from top
+    const leftTop    = [0, size * 0.08];     // black/red boundary on left edge
+    const rightTop   = [size, size * 0.21];  // black/white boundary on right edge
+    const rightBot   = [size, size * 0.79];  // white/green boundary on right edge
+    const leftBot    = [0, size * 0.92];     // green/red boundary on left edge
 
     const quadrants = [
-      { color: COLORS.black, clip: [topLeft, topRight, [center, center]] },          // top
-      { color: COLORS.white, clip: [topRight, [size, 0], [size, size], bottomRight, [center, center]] }, // right
-      { color: COLORS.green, clip: [bottomRight, bottomLeft, [center, center]] },    // bottom
-      { color: COLORS.red,   clip: [bottomLeft, [0, size], [0, 0], topLeft, [center, center]] },         // left
+      // Black: top-left corner area + full top + top-right corner + right edge down to 21%
+      { color: COLORS.black, clip: [leftTop, [0, 0], [size, 0], rightTop, [center, center]] },
+      // White: right edge from 21% to 79%
+      { color: COLORS.white, clip: [rightTop, rightBot, [center, center]] },
+      // Green: right edge from 79% + bottom-right corner + full bottom + bottom-left corner area
+      { color: COLORS.green, clip: [rightBot, [size, size], [0, size], leftBot, [center, center]] },
+      // Red: left edge from 92% up to 8%
+      { color: COLORS.red,   clip: [leftBot, leftTop, [center, center]] },
     ];
 
     for (const q of quadrants) {
