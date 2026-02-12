@@ -29,6 +29,10 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  border-top: 4px solid var(--black);
+  border-right: 4px solid var(--white);
+  border-bottom: 4px solid var(--green);
+  border-left: 4px solid var(--red);
 }
 
 /* ---- Header ---- */
@@ -36,8 +40,6 @@ body {
 header {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  position: relative;
-  overflow: hidden;
 }
 
 .header-inner {
@@ -47,23 +49,6 @@ header {
   margin: 0 auto;
 }
 
-.flag-bar {
-  display: flex;
-  height: 4px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-.flag-stripe {
-  flex: 1;
-}
-
-.flag-stripe.black { background: var(--black); }
-.flag-stripe.white { background: var(--white); border-bottom: 1px solid var(--border); }
-.flag-stripe.green { background: var(--green); }
-.flag-stripe.red { background: var(--red); }
 
 header h1 {
   font-size: 1.6rem;
